@@ -1,0 +1,71 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# ⚠️ 密钥：真实 API Key 只存本地，绝不进版本库。
+# 克隆后请复制 lib/core/constants/secrets.example.dart 为 secrets.dart 并填入自己的 Key。
+lib/core/constants/secrets.dart
+
+# 本地临时产物（验证截图、发布目录里的大体积 APK）
+/_shot/
+/_bg_preview/
+/_acl_recovery/
+/.workbuddy/
+/release_page/*.apk
+
+# 本机环境变量文件（含错误的旧元数据，不入库）
+/.env.json
+
+# ---- 沙箱构建环境（本会话为绕开权限限制在工作区内搭建，绝不可提交）----
+/.flutter-sdk/
+/.gradle-home/
+/.tmp-build/
+/_gradle-*.zip
+/build_tool.ps1
+/_build.log
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# һ���� golden ��֤�ű����ͼ�����ر���������⣩
+/test/_tmp_deck_preview_test.dart
+/test/goldens/

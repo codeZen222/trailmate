@@ -1,0 +1,75 @@
+name: trailmate
+description: 一个优雅的旅行日志应用
+publish_to: 'none'
+version: 1.0.3+5
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # 状态管理
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
+
+  # 数据库
+  drift: ^2.21.0
+  sqlite3_flutter_libs: ^0.5.0
+  path_provider: ^2.1.3
+  path: ^1.9.0
+
+  # 地图：已改为纯 CustomPaint 自绘（见 widgets/footprint/china_map_painter.dart），
+  # 不再引入高德地图 SDK —— 它单 ABI 就 7.6MB，且底图是全球瓦片无法只显示中国。
+  # flutter_map / latlong2 也一并移除：省界数据由自有 GeoLatLng 消费。
+  # 地名转坐标仍走高德 Web 服务（REST + dio，见 services/amap_geocoding_service.dart），
+  # 那是数据源、与渲染无关，所以定位精度不受影响。
+
+  # 定位
+  geolocator: ^12.0.0
+  geocoding: ^3.0.0
+
+  # 图片
+  image_picker: ^1.1.2
+
+  # 网络
+  dio: ^5.4.3
+
+  # 分享（10.1.4：兼容 Flutter 3.29 / Kotlin 1.9，且仍用 SharePlus.instance.share API）
+  share_plus: ^10.1.4
+
+  # Markdown 渲染
+  flutter_markdown: ^0.7.1
+
+  # 主题
+  flex_color_scheme: ^8.0.1
+
+  # PDF 生成
+  pdf: ^3.10.8
+  printing: ^5.12.0
+
+  # 工具
+  intl: ^0.19.0
+  uuid: ^4.4.0
+
+  # 语音输入功能已按需求移除（精灵小窗只保留文字与快捷短语）。
+  # speech_to_text 依赖同时删除，可少一个原生插件与其权限声明。
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.2
+  drift_dev: ^2.21.0
+  build_runner: ^2.4.9
+  riverpod_generator: ^2.4.0
+  json_serializable: ^6.8.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    # 中国省级边界（来源：阿里 DataV.GeoAtlas，含台湾/港澳/南海诸岛与九段线）
+    - assets/geo/china_provinces.json

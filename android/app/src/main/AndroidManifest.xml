@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- 语音输入功能已移除，故不再申请 RECORD_AUDIO（少一个敏感权限，审核与用户信任都更好） -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="29"/>
+    <!-- 原「高德地图所需权限」三项已删除：ACCESS_NETWORK_STATE / ACCESS_WIFI_STATE /
+         READ_PHONE_STATE。地图改为自绘后没有使用者，其中 READ_PHONE_STATE 属敏感权限，
+         保留会额外触发上架隐私说明。联网能力由上面的 INTERNET 提供。 -->
+
+    <application
+        android:label="TrailMate"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher">
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+        <!-- 高德 Android SDK 已移除（地图改为自绘），故不再需要 com.amap.api.v2.apikey。
+             地名转坐标走高德 Web 服务，Key 写在 Dart 侧，与 Manifest 无关。 -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
